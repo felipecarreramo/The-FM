@@ -1,22 +1,25 @@
 package com.platzi.silmood.thefm.ui;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.platzi.silmood.thefm.MainActivity;
 import com.platzi.silmood.thefm.R;
 import com.platzi.silmood.thefm.domain.Artist;
+import com.platzi.silmood.thefm.io.LastFMAPIAdapter;
+import com.platzi.silmood.thefm.io.model.HypedArtistsResponse;
 import com.platzi.silmood.thefm.ui.adapter.HypedArtistsAdapter;
 
 import java.util.ArrayList;
+
+import retrofit.Callback;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
 
 /**
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -34,7 +37,7 @@ import java.util.ArrayList;
  * Created by Pedro Hernández on 07/2015.
  */
 
-public class HypedArtistsFragment extends Fragment{
+public class HypedArtistsFragment extends Fragment implements Callback<HypedArtistsResponse> {
 
     public static final int NUM_COLUMNS = 2;
 
@@ -49,6 +52,14 @@ public class HypedArtistsFragment extends Fragment{
         this.adapter = new HypedArtistsAdapter(getActivity());
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        LastFMAPIAdapter.getApiService()
+                .getHypedArtists(this);
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -56,7 +67,7 @@ public class HypedArtistsFragment extends Fragment{
         mHypedArtistsList = (RecyclerView) root.findViewById(R.id.hyped_artists_list);
 
         setupArtitsList();
-        setDummyContent();
+       // setDummyContent();
 
         return root;
     }
@@ -70,10 +81,20 @@ public class HypedArtistsFragment extends Fragment{
     private void setDummyContent(){
 
         ArrayList<Artist> artists = new ArrayList<>();
-        for (int i = 0 ; i < 10; i++){
+        for (int i = 0 ; i < 50; i++){
             artists.add(new Artist("Artist "+i));
         }
 
         this.adapter.addAll(artists);
+    }
+
+    @Override
+    public void success(HypedArtistsResponse hypedArtistsResponse, Response response) {
+        adapter.addAll(hypedArtistsResponse.getArtists());
+    }
+
+    @Override
+    public void failure(RetrofitError error) {
+        error.printStackTrace();
     }
 }

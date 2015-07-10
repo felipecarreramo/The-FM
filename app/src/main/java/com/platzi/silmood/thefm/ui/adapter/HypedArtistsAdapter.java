@@ -59,8 +59,8 @@ public class HypedArtistsAdapter  extends RecyclerView.Adapter<HypedArtistsAdapt
             throw new NullPointerException("The items cannot be null");
 
         this.artists.addAll(artists);
-        notifyItemRangeInserted(getItemCount() - 1, artists.size());
-        //notifyDataSetChanged();
+        //notifyItemRangeInserted(getItemCount() - 1, artists.size());
+        notifyDataSetChanged();
 
     }
 
