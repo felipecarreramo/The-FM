@@ -16,40 +16,41 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 /**
- * Created by FelipeCarrera on 9/07/15.
+ * Created by Felipe Carrera on 13/07/15.
  */
-public class HypedArtistsAdapter  extends RecyclerView.Adapter<HypedArtistsAdapter.HypedArtistViewHolder> {
+public class TopArtistsAdapter extends RecyclerView.Adapter<TopArtistsAdapter.TopArtistViewHolder> {
 
     private Context context;
     private ArrayList<Artist> artists;
 
 
-    public HypedArtistsAdapter( Context context) {
+    public TopArtistsAdapter(Context context) {
         this.context = context;
-        this. artists = new ArrayList<>();
+        this.artists = new ArrayList<>();
     }
 
 
     @Override
-    public HypedArtistViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public TopArtistViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(this.context).
-                inflate(R.layout.item_hyped_artists, parent, false);
+                inflate(R.layout.item_top_artists, parent, false);
 
 
-        return new HypedArtistViewHolder(itemView);
+        return new TopArtistsAdapter.TopArtistViewHolder(itemView);
 
     }
 
     @Override
-    public void onBindViewHolder(HypedArtistViewHolder holder, int position) {
+    public void onBindViewHolder(TopArtistViewHolder holder, int position) {
 
         Artist art = this.artists.get(position);
         holder.setArtistName(art.getName());
+        holder.setArtistPlaycount(art.getPlaycount());
+        holder.setArtistListeners(art.getListeners());
         if (art.getUrlMediumImage() != null)
             holder.setArtistImage(art.getUrlMediumImage());
         else
             holder.setArtistDefaultImage();
-
     }
 
     @Override
@@ -57,7 +58,7 @@ public class HypedArtistsAdapter  extends RecyclerView.Adapter<HypedArtistsAdapt
         return this.artists.size();
     }
 
-    public void addAll(@NonNull ArrayList<Artist> artists){
+    public void addAll(@NonNull ArrayList<Artist> artists) {
 
         if (artists == null)
             throw new NullPointerException("The items cannot be null");
@@ -68,35 +69,52 @@ public class HypedArtistsAdapter  extends RecyclerView.Adapter<HypedArtistsAdapt
 
     }
 
-    public class HypedArtistViewHolder extends RecyclerView.ViewHolder{
+    public class TopArtistViewHolder extends RecyclerView.ViewHolder {
 
         TextView artistName;
+        TextView artistPlaycount;
+        TextView artistListeners;
         ImageView artistImage;
 
-        public HypedArtistViewHolder(View itemView) {
+        public TopArtistViewHolder(View itemView) {
             super(itemView);
 
             this.artistName = (TextView) itemView.findViewById(R.id.txt_name);
             this.artistImage = (ImageView) itemView.findViewById(R.id.img_artist);
+            this.artistPlaycount = (TextView) itemView.findViewById(R.id.txt_playcount);
+            this.artistListeners = (TextView) itemView.findViewById(R.id.txt_listeners);
 
         }
 
-        public void setArtistName(String name){
+        public void setArtistName(String name) {
             this.artistName.setText(name);
         }
 
-        public void setArtistImage(String url){
+        public void setArtistPlaycount(String playcount) {
+            artistPlaycount.setText(playcount);
+        }
+
+        public void setArtistListeners(String listeners) {
+            artistListeners.setText(listeners);
+
+        }
+
+
+        public void setArtistImage(String url) {
             Picasso.with(context)
                     .load(url)
                     .placeholder(R.drawable.artist_placeholder)
                     .into(artistImage);
         }
 
-        public void setArtistDefaultImage(){
+        public void setArtistDefaultImage() {
             Picasso.with(context)
                     .load(R.drawable.artist_placeholder)
                     .into(artistImage);
         }
+
     }
 
 }
+
+

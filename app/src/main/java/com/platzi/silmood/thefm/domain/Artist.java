@@ -1,5 +1,8 @@
 package com.platzi.silmood.thefm.domain;
 
+import com.google.gson.annotations.SerializedName;
+import com.platzi.silmood.thefm.io.model.JsonKeys;
+
 /**
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,10 +20,20 @@ package com.platzi.silmood.thefm.domain;
  */
 public class Artist {
 
+
+    @SerializedName(JsonKeys.ARTIST_NAME)
     String name;
+
+    String urlMediumImage;
+    String urlLargeImage;
+    String listeners;
+    String playcount;
 
     public Artist(String name) {
         this.name = name;
+    }
+
+    public Artist() {
     }
 
     public String getName() {
@@ -29,5 +42,37 @@ public class Artist {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getUrlMediumImage() {
+        return urlMediumImage;
+    }
+
+    public void setUrlMediumImage(String urlMediumImage) {
+        this.urlMediumImage = urlMediumImage;
+    }
+
+    public String getUrlLargeImage() {
+        return urlLargeImage;
+    }
+
+    public void setUrlLargeImage(String urlLargeImage) {
+        this.urlLargeImage = urlLargeImage;
+    }
+
+    public String getListeners() {
+        return listeners;
+    }
+
+    public void setListeners(String listeners) {
+        this.listeners = listeners;
+    }
+
+    public String getPlaycount() {
+        return playcount;
+    }
+
+    public void setPlaycount(String playcount) {
+        this.playcount = playcount;
     }
 }

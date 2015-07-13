@@ -2,10 +2,7 @@ package com.platzi.silmood.thefm;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-
-import com.platzi.silmood.thefm.ui.HypedArtistsFragment;
+import com.platzi.silmood.thefm.ui.fragment.TopArtistsFragment;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -16,8 +13,9 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
 
         if(savedInstanceState == null){
+
             getSupportFragmentManager().beginTransaction()
-                    .add(R.id.main_container, new HypedArtistsFragment())
+                    .add(R.id.main_container, new TopArtistsFragment())
                     .commit();
         }
     }

@@ -14,10 +14,15 @@ public class APIConstants {
     public static final String PARAM_API_KEY = "api_key";
 
     public static final String VALUE_HYPED_ARTISTS_METHOD = "chart.gethypedartists";
+    public static final String VALUE_TOP_ARTISTS_METHOD = "chart.gettopartists";
     public static final String VALUE_JSON = "json";
 
     public static final String URL_HYPED_ARTISTS = PATH_VERSION+"?" + PARAM_API_KEY + "="+API_KEY+"&"+
             PARAM_METHOD + "="+VALUE_HYPED_ARTISTS_METHOD+"&"+
+            PARAM_FORMAT + "="+VALUE_JSON;
+
+    public static final String URL_TOP_ARTISTS = PATH_VERSION+"?" + PARAM_API_KEY + "="+API_KEY+"&"+
+            PARAM_METHOD + "="+VALUE_TOP_ARTISTS_METHOD+"&"+
             PARAM_FORMAT + "="+VALUE_JSON;
 
 }

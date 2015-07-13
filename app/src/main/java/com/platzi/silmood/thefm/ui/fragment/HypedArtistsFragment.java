@@ -1,4 +1,4 @@
-package com.platzi.silmood.thefm.ui;
+package com.platzi.silmood.thefm.ui.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -13,6 +13,7 @@ import com.platzi.silmood.thefm.R;
 import com.platzi.silmood.thefm.domain.Artist;
 import com.platzi.silmood.thefm.io.LastFMAPIAdapter;
 import com.platzi.silmood.thefm.io.model.HypedArtistsResponse;
+import com.platzi.silmood.thefm.ui.ItemOffsetDecoration;
 import com.platzi.silmood.thefm.ui.adapter.HypedArtistsAdapter;
 
 import java.util.ArrayList;

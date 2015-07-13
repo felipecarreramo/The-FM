@@ -6,9 +6,9 @@ import com.platzi.silmood.thefm.domain.Artist;
 import java.util.ArrayList;
 
 /**
- * Created by diseno_01 on 10/07/15.
+ * Created by Felipe Carrera on 13/07/15.
  */
-public class HypedArtistsResponse {
+public class TopArtistsResponse {
 
     @SerializedName(JsonKeys.ARTISTS_RESULTS)
     HypedArtistsResults results;
@@ -23,8 +23,7 @@ public class HypedArtistsResponse {
         return results.artists;
     }
 
-    public void setArtists(ArrayList<Artist> artists)
-    {
+    public void setArtists(ArrayList<Artist> artists) {
         this.results.artists = artists;
     }
 }
