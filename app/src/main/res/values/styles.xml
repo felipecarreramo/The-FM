@@ -8,6 +8,8 @@
         <item name="android:windowBackground">@color/window_background</item>
         <item name="android:textColorPrimary">@color/text</item>
         <item name="android:textColorSecondary">@color/text_secondary</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
     </style>
 
 </resources>

@@ -2,7 +2,7 @@ package com.platzi.silmood.thefm.ui.fragment;
 
 
 import android.os.Bundle;
-import android.app.Fragment;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -61,7 +61,7 @@ public class TopArtistsFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_top_artists, container, false);
         topArtistsList = (RecyclerView) root.findViewById(R.id.top_artist_list);
 
-        // Inflate the layout for this fragment
+        setupList();
         return root;
     }
 

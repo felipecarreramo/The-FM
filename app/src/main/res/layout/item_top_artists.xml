@@ -28,7 +28,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:gravity="center">
 
             <TextView
                 android:id="@+id/txt_playcount"
@@ -38,6 +39,8 @@
                 android:layout_marginRight="4dp"
                 android:layout_marginEnd="4dp"
                 android:gravity="center"
+                android:drawableStart="@drawable/ic_playcount"
+                android:drawableLeft="@drawable/ic_playcount"
                 />
 
             <TextView
@@ -46,6 +49,8 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/text"
                 android:gravity="center"
+                android:drawableStart="@drawable/ic_listeners"
+                android:drawableLeft="@drawable/ic_listeners"
                 />
 
         </LinearLayout>
